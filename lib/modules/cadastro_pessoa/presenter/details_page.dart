@@ -1,6 +1,6 @@
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/controller/page_controller/details_page_controller.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/controller/pessoa_controller.dart';
-import 'package:cadastro_pessoas/modules/cadastro_pessoa/presenter/event/save_pessoa_event.dart';
+import 'package:cadastro_pessoas/modules/cadastro_pessoa/presenter/event/delete_pessoa_event.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/infra/models/result_pessoa_model.dart';
@@ -11,9 +11,9 @@ import 'package:cadastro_pessoas/modules/cadastro_pessoa/presenter/states/states
     as state;
 
 class DetailsPage extends StatefulWidget {
-  ResultPessoaModel pessoa;
+  final ResultPessoaModel pessoa;
 
-  DetailsPage([
+  const DetailsPage([
     this.pessoa,
     Key key,
   ]) : super(key: key);
@@ -23,7 +23,7 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
-  final eventDeletePessoa = Modular.get<SavePessoaEvent>();
+  final eventDeletePessoa = Modular.get<DeletePessoaEvent>();
 
   ProgressDialog progressDialog;
 
@@ -59,7 +59,7 @@ class _DetailsPageState extends State<DetailsPage> {
 
                 var request = await _eventDeletePessoa(widget.pessoa);
 
-                var savePessoa = DeletePageController.savePessoa(request);
+                var savePessoa = DeletePageController.deletePessoa(request);
 
                 if (savePessoa == state.DeletePessoaSuccess) {
                   await progressDialog.hide();
@@ -76,6 +76,32 @@ class _DetailsPageState extends State<DetailsPage> {
       ),
       appBar: AppBar(
         title: Text(widget.pessoa.name),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              progressDialog =
+                  ProgressDialog(context, type: ProgressDialogType.Normal);
+              progressDialog.style(
+                  message: "Carregando dados...",
+                  progressWidget: const CircularProgressIndicator());
+
+              await progressDialog.show();
+
+              var request = await _eventDeletePessoa(widget.pessoa);
+
+              var deletePessoa = DeletePageController.deletePessoa(request);
+
+              if (deletePessoa == state.DeletePessoaSuccess) {
+                await progressDialog.hide();
+                _alert(context,
+                    label: 'Sucesso!',
+                    msg: PessoaController.pessoa.name +
+                        ' removido(a) com sucesso');
+              }
+            },
+            icon: const Icon(Icons.delete),
+          )
+        ],
       ),
       body: ListView(
         children: [

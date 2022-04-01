@@ -8,7 +8,7 @@ class PessoaController {
     pessoas = data;
   }
 
-  static inicializaPessoa(ResultPessoaModel data){
+  static inicializaPessoa(ResultPessoaModel data) {
     pessoa = data;
   }
 }

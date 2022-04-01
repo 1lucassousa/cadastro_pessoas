@@ -3,10 +3,10 @@ import 'package:cadastro_pessoas/modules/cadastro_pessoa/presenter/states/states
     as state;
 
 class DeletePageController {
-  static savePessoa(data) {
+  static deletePessoa(data) {
     if (data is state.DeletePessoaSuccess) {
       PessoaController.inicializaPessoa((data).pessoa);
-      return state.SavePessoaSuccess;
+      return state.DeletePessoaSuccess;
     } else if (data is state.Error) {
       return (data).error;
     }

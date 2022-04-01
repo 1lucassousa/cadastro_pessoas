@@ -41,10 +41,10 @@ class AppModule extends MainModule {
   @override
   // TODO: implement routers
   List<ModularRouter> get routers => [
-    ModularRouter('/', child: (_,__) => const HomePage()),
-    ModularRouter('/', child: (_,__) => DetailsPage()),
-    ModularRouter('/', child: (_,__) => const CreatePage()),
-  ];
+        ModularRouter('/', child: (_, __) => const HomePage()),
+        ModularRouter('/', child: (_, __) => const DetailsPage()),
+        ModularRouter('/', child: (_, __) => const CreatePage()),
+      ];
 
   @override
   // TODO: implement bootstrap

@@ -84,7 +84,11 @@ class _CreatePageState extends State<CreatePage> {
 
                 if (savePessoa == state.SavePessoaSuccess) {
                   await progressDialog.hide();
-                  _alert(context, label: 'Sucesso!', msg: PessoaController.pessoa.name + ' cadastrado(a) com sucesso', save: true);
+                  _alert(context,
+                      label: 'Sucesso!',
+                      msg: PessoaController.pessoa.name +
+                          ' cadastrado(a) com sucesso',
+                      save: true);
                 }
               }
             },
@@ -99,33 +103,36 @@ class _CreatePageState extends State<CreatePage> {
         padding: const EdgeInsets.all(10),
         child: ListView(
           children: [
-            _textFormField('Nome', controller: nameController),
+            _textFormField('Nome',
+                controller: nameController, icon: Icons.people),
             const SizedBox(
               height: 10,
             ),
-            _textFormField('Email', controller: emailController),
+            _textFormField('Email',
+                controller: emailController, icon: Icons.email),
             const SizedBox(
               height: 10,
             ),
-            _textFormFieldTelefone('Telefone', controller: phoneController),
+            _textFormFieldTelefone('Telefone',
+                controller: phoneController, icon: Icons.phone),
             const SizedBox(
               height: 10,
             ),
-            _dateTimeField('Data de nascimento', controller: birthController)
+            _dateTimeField('Data de nascimento',
+                controller: birthController, icon: Icons.calendar_today)
           ],
         ),
       ),
     );
   }
 
-  _textFormField(
-    String label, {
-    TextEditingController controller,
-  }) {
+  _textFormField(String label,
+      {TextEditingController controller, IconData icon}) {
     return TextFormField(
       controller: controller,
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
+        prefixIcon: Icon(icon),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(25.0),
         ),
@@ -137,7 +144,7 @@ class _CreatePageState extends State<CreatePage> {
   _textFormFieldTelefone(
     String label, {
     TextEditingController controller,
-    FormFieldValidator<String> validator,
+    IconData icon,
   }) {
     return TextFormField(
       inputFormatters: [
@@ -145,9 +152,9 @@ class _CreatePageState extends State<CreatePage> {
         TelefoneInputFormatter(),
       ],
       controller: controller,
-      validator: validator,
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
+        prefixIcon: Icon(icon),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(25),
         ),
@@ -156,14 +163,13 @@ class _CreatePageState extends State<CreatePage> {
     );
   }
 
-  _dateTimeField(
-    String label, {
-    TextEditingController controller,
-  }) {
+  _dateTimeField(String label,
+      {TextEditingController controller, IconData icon}) {
     return DateTimeField(
       format: DateFormat("dd/MM/yyyy"),
       keyboardType: TextInputType.datetime,
       decoration: InputDecoration(
+          prefixIcon: Icon(icon),
           labelText: label,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(25))),
       onShowPicker: (context, currentValue) {
