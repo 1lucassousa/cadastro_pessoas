@@ -5,6 +5,7 @@ import 'package:cadastro_pessoas/modules/cadastro_pessoa/external/datasources/sa
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/infra/repositories/delete_pessoa_repository_impl.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/infra/repositories/save_pessoa_repository_impl.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/presenter/create_page.dart';
+import 'package:cadastro_pessoas/modules/cadastro_pessoa/presenter/edit_page.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/presenter/event/delete_pessoa_event.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/presenter/event/save_pessoa_event.dart';
 import 'package:dio/dio.dart';
@@ -44,6 +45,7 @@ class AppModule extends MainModule {
         ModularRouter('/', child: (_, __) => const HomePage()),
         ModularRouter('/', child: (_, __) => const DetailsPage()),
         ModularRouter('/', child: (_, __) => const CreatePage()),
+        ModularRouter('/', child: (_, __) => const EditPage()),
       ];
 
   @override
