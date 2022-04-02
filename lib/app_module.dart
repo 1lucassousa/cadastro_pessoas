@@ -1,12 +1,16 @@
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/domain/usecases/delete_pessoa.dart';
+import 'package:cadastro_pessoas/modules/cadastro_pessoa/domain/usecases/edit_pessoa.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/domain/usecases/save_pessoa.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/external/datasources/delete_pessoa_api_datasource.dart';
+import 'package:cadastro_pessoas/modules/cadastro_pessoa/external/datasources/edit_pessoa_api_datasource.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/external/datasources/save_pessoa_api_datasource.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/infra/repositories/delete_pessoa_repository_impl.dart';
+import 'package:cadastro_pessoas/modules/cadastro_pessoa/infra/repositories/edit_pessoa_repository_impl.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/infra/repositories/save_pessoa_repository_impl.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/presenter/create_page.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/presenter/edit_page.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/presenter/event/delete_pessoa_event.dart';
+import 'package:cadastro_pessoas/modules/cadastro_pessoa/presenter/event/edit_pessoa_event.dart';
 import 'package:cadastro_pessoas/modules/cadastro_pessoa/presenter/event/save_pessoa_event.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -37,6 +41,10 @@ class AppModule extends MainModule {
         Bind((i) => DeletePessoaApiDatasource(i())),
         Bind((i) => DeletePessoaRepositoryImpl(i())),
         Bind((i) => DeletePessoaEvent(i())),
+        Bind((i) => EditPessoaImpl(i())),
+        Bind((i) => EditPessoaApiDatasource(i())),
+        Bind((i) => EditPessoaRepositoryImpl(i())),
+        Bind((i) => EditPessoaEvent(i())),
       ];
 
   @override

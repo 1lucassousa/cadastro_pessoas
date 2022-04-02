@@ -21,6 +21,12 @@ class DeletePessoaSuccess {
   DeletePessoaSuccess(this.pessoa);
 }
 
+class EditPessoaSuccess {
+  final ResultPessoaModel pessoa;
+
+  EditPessoaSuccess(this.pessoa);
+}
+
 class Error implements State {
   final DatasourceError error;
 

@@ -13,10 +13,10 @@ class DeletePessoaApiDatasource implements DeletePessoaDatasource {
   Future<ResultPessoaModel> deletePessoa(ResultPessoaModel pessoa) async {
     var url = domain + "/${pessoa.id}";
 
-    final response = await dio.patch(url, data: pessoa.toJson());
+    final response = await dio.delete(url);
 
-    if (response.statusCode == 200) {
-      final result = ResultPessoaModel.fromMap(response.data);
+    if (response.statusCode == 204) {
+      final result = pessoa;
 
       return result;
     } else {
