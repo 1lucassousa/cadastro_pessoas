@@ -206,7 +206,7 @@ class _DetailsPageState extends State<DetailsPage> {
               child: const Text("Ok"),
               onPressed: () {
                 Navigator.pop(context);
-                Navigator.pop(context);
+                Navigator.pop(context, true);
               },
             )
           ],

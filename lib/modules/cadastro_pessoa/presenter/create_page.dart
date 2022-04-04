@@ -197,7 +197,7 @@ class _CreatePageState extends State<CreatePage> {
               onPressed: () {
                 if (save == true) {
                   Navigator.pop(context);
-                  Navigator.pop(context);
+                  Navigator.pop(context, true);
                 } else {
                   Navigator.pop(context);
                 }

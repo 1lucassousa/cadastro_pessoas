@@ -19,7 +19,7 @@ class ListPessoasApiDatasource implements ListPessoasDatasource {
       final list = (response.data as List)
           .map((e) => ResultPessoaModel.fromMap(e))
           .toList();
-          
+
       return list;
     } else {
       throw DatasourceError();

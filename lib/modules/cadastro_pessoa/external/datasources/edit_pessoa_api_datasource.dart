@@ -13,12 +13,7 @@ class EditPessoaApiDatasource implements EditPessoaDatasource {
   Future<ResultPessoaModel> editPessoa(ResultPessoaModel pessoa) async {
     var url = domain + "/${pessoa.id}";
 
-    print(url);
-
     final response = await dio.patch(url, data: pessoa.toJson());
-
-    print(response.data);
-    print(response.statusCode);
 
     if (response.statusCode == 200) {
       final result = ResultPessoaModel.fromMap(response.data);

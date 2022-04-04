@@ -32,13 +32,17 @@ class _HomePageState extends State<HomePage> {
         title: const Text('Home Page'),
         actions: [
           IconButton(
-            onPressed: () {
-              Navigator.push(
+            onPressed: () async {
+              var result = await Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const CreatePage(),
                 ),
               );
+
+              if (result == true) {
+                _atualizaLista();
+              }
             },
             icon: const Icon(Icons.person_add),
           )
@@ -76,8 +80,6 @@ class _HomePageState extends State<HomePage> {
                             DetailsPage(PessoaController.pessoas[index]),
                       ),
                     );
-
-                    print(result);
 
                     if (result == true) {
                       _atualizaLista();

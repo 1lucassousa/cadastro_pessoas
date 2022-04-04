@@ -206,8 +206,8 @@ class _EditPageState extends State<EditPage> {
               child: const Text("Ok"),
               onPressed: () {
                 if (save == true) {
-                  Navigator.pop(context, true);
-                  Navigator.pop(context, true);
+                  Navigator.pop(context);
+                  Navigator.pop(context);
                   Navigator.pop(context, true);
                 } else {
                   Navigator.pop(context);
